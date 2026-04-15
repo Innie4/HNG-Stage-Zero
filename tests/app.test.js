@@ -10,6 +10,17 @@ describe("GET /api/classify", () => {
     vi.restoreAllMocks();
   });
 
+  it("returns a healthy response on the root path", async () => {
+    const response = await request(createApp()).get("/");
+
+    expect(response.status).toBe(200);
+    expect(response.headers["access-control-allow-origin"]).toBe("*");
+    expect(response.body).toEqual({
+      status: "success",
+      message: "Stage 0 API is running"
+    });
+  });
+
   it("returns a processed success response", async () => {
     nock("https://api.genderize.io").get("/").query({ name: "john" }).reply(200, {
       count: 1234,

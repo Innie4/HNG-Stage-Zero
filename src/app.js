@@ -17,6 +17,13 @@ export function createApp(dependencies = {}) {
     })
   );
 
+  app.get("/", (request, response) => {
+    return response.status(200).json({
+      status: "success",
+      message: "Stage 0 API is running"
+    });
+  });
+
   app.get("/api/classify", async (request, response, next) => {
     const { name } = request.query;
 

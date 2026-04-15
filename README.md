@@ -44,6 +44,8 @@ npm start
 
 The app starts on `http://localhost:3000` by default.
 
+The root path returns a simple 200 health response for platform checks.
+
 You can also set a custom port:
 
 ```bash
